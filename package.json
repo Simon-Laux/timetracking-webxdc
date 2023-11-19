@@ -1,7 +1,7 @@
 {
   "name": "timetracking-webxdc",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.6.0pre",
   "type": "module",
   "license": "GPL-3.0-or-later",
   "scripts": {
@@ -26,6 +26,7 @@
     "chartjs-chart-matrix": "^2.0.1",
     "charts.css": "^1.0.1",
     "daisyui": "^3.0.20",
+    "exceljs": "^4.4.0",
     "luxon": "^3.2.1",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.2.3",

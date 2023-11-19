@@ -7,6 +7,7 @@ import { AboutPage } from "./pages/more/AboutPage";
 import { BackupPage } from "./pages/more/BackupPage";
 import { CreditsPage } from "./pages/more/CreditsPage";
 import { OptionsPage } from "./pages/more/OptionsPage";
+import { ExportReportPage } from "./pages/more/ExportReportPage";
 import { MorePage } from "./pages/MorePage";
 import { StatisticsPage } from "./pages/StatisticsPage";
 import { DaysInMonthsPage } from "./pages/stats/DaysInMonthsPage";
@@ -59,6 +60,10 @@ export const router = createHashRouter([
       {
         path: "more/backup",
         element: <BackupPage />,
+      },
+      {
+        path: "more/report",
+        element: <ExportReportPage />,
       },
       {
         path: "more/credits",
