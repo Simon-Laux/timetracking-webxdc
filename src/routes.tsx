@@ -13,6 +13,7 @@ import { DaysInMonthsPage } from "./pages/stats/DaysInMonthsPage";
 import { DaysInWeeksPage } from "./pages/stats/DaysInWeeksPage";
 import { TrackPage } from "./pages/TrackPage";
 import { CreateEntryPage } from "./pages/entries/CreateEntryPage";
+import { ExportReportPage } from "./pages/more/ExportReportPage";
 
 export const router = createHashRouter([
   {
@@ -60,6 +61,10 @@ export const router = createHashRouter([
       {
         path: "more/options",
         element: <OptionsPage />,
+      },
+      {
+        path: "more/export-report",
+        element: <ExportReportPage />,
       },
       {
         path: "more/backup",

@@ -30,6 +30,13 @@ export function MorePage() {
         <hr />
         <button
           className="w-full p-2 text-start"
+          onClick={() => navigate("/more/export-report")}
+        >
+          Export Report &gt;
+        </button>
+        <hr />
+        <button
+          className="w-full p-2 text-start"
           onClick={() => navigate("/more/backup")}
         >
           Backup (Import / Export) &gt;
