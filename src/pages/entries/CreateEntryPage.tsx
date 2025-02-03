@@ -105,7 +105,6 @@ export function CreateEntryPage() {
   };
 
   const quick_tasks = useStore.getState().getSortedUniqueLabels();
-  const auto_complete = localStorage.getItem("autocomplete_enabled") === "true";
 
   const registerLabel = register("label", { required: true });
 
@@ -135,15 +134,13 @@ export function CreateEntryPage() {
             {...registerLabel}
             className="input input-bordered grow"
             minLength={2}
-            list={auto_complete ? "quick-tasks-create-entry" : undefined}
+            list="quick-tasks-create-entry"
           />
-          {auto_complete && (
-            <datalist id="quick-tasks-create-entry">
-              {quick_tasks.map(({ label }) => (
-                <option key={label}>{label}</option>
-              ))}
-            </datalist>
-          )}
+          <datalist id="quick-tasks-create-entry">
+            {quick_tasks.map(({ label }) => (
+              <option key={label}>{label}</option>
+            ))}
+          </datalist>
         </div>
         <p className="text-red-600">{errors.label?.message}</p>
         <br />

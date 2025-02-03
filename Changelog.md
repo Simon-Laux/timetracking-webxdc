@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- enable label autocompletion feature by default and remove the setting for it.
+
 ## 0.9.0
 
 - feat: a way to pause active task from tasks list.
