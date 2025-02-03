@@ -123,7 +123,6 @@ export function TrackPage() {
   const lastEntry: TaskEntry | undefined =
     open_entries[open_entries.length - 1];
   const labelRef = useRef<HTMLInputElement>(null);
-  const auto_complete = localStorage.getItem("autocomplete_enabled") === "true";
   const hide_track_page_stats =
     localStorage.getItem("hide_track_page_stats") === "true";
   const [failedToEndEntry, setFailedToEndEntry] = useState<TaskEntry | null>(
@@ -270,7 +269,7 @@ export function TrackPage() {
       >
         {/* start a new task */}
         <input
-          list={auto_complete ? "quick-tasks" : undefined}
+          list="quick-tasks"
           ref={labelRef}
           type="text"
           placeholder="task label"
@@ -282,13 +281,11 @@ export function TrackPage() {
                     placeholder:text-gray-400
                     focus:border-gray-400 focus:bg-white focus:ring-0"
         />
-        {auto_complete && (
-          <datalist id="quick-tasks">
-            {quick_tasks.map(({ label }) => (
-              <option key={label}>{label}</option>
-            ))}
-          </datalist>
-        )}
+        <datalist id="quick-tasks">
+          {quick_tasks.map(({ label }) => (
+            <option key={label}>{label}</option>
+          ))}
+        </datalist>
         <button className="btn" onClick={create}>
           <PlayIcon className="mr-0.5 w-5" />
           Start
