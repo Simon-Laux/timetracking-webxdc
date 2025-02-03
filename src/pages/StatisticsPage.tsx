@@ -174,6 +174,16 @@ export function StatisticsPage() {
         timeRange={pieTimeRangeOptions[pieTimeRangeIndex].value}
         threshold={pieTimeRangeOptions[pieTimeRangeIndex].threshold}
       />
+      <div className="m-1">
+        <hr />
+        <button
+          className="w-full p-2 text-start"
+          onClick={() => navigate("/stats/time-spent")}
+        >
+          Advanced Time Spent Per Label View &gt;
+        </button>
+        <hr />
+      </div>
     </div>
   );
 }

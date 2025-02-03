@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- add view to see time per label for all time
 - add button to take over start date to end date to the create entry screen.
 - enable label autocompletion feature by default and remove the setting for it.
 
