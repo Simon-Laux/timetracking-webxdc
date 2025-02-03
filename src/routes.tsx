@@ -11,6 +11,7 @@ import { MorePage } from "./pages/MorePage";
 import { StatisticsPage } from "./pages/StatisticsPage";
 import { DaysInMonthsPage } from "./pages/stats/DaysInMonthsPage";
 import { DaysInWeeksPage } from "./pages/stats/DaysInWeeksPage";
+import { TimeSpentPage } from "./pages/stats/TimeSpentPage";
 import { TrackPage } from "./pages/TrackPage";
 import { CreateEntryPage } from "./pages/entries/CreateEntryPage";
 
@@ -48,6 +49,10 @@ export const router = createHashRouter([
       {
         path: "stats/months",
         element: <DaysInMonthsPage />,
+      },
+      {
+        path: "stats/time-spent",
+        element: <TimeSpentPage />,
       },
       {
         path: "more",
