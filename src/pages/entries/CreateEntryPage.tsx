@@ -31,6 +31,7 @@ export function CreateEntryPage() {
     formState: { errors, isValid },
     reset,
     setValue,
+    getValues,
   } = useForm<FormValues>({});
 
   const [duration, setDuration] = useState<Duration | null>(null);
@@ -104,6 +105,10 @@ export function CreateEntryPage() {
     }
   };
 
+  const takeOverFromStart = () => {
+    setValue("end", getValues().start);
+  };
+
   const quick_tasks = useStore.getState().getSortedUniqueLabels();
 
   const registerLabel = register("label", { required: true });
@@ -161,6 +166,9 @@ export function CreateEntryPage() {
             {...register("end", { required: true })}
             className="input input-bordered max-w-xs"
           />
+          <button className="btn" onClick={takeOverFromStart}>
+            Take over from start
+          </button>
         </label>
         <p className="text-red-600">{errors.end?.message}</p>
         <br />
