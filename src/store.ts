@@ -13,6 +13,7 @@ const enum UpdateActionType {
   DeleteEntryType = "DEL",
   CreateEntryType = "CE",
   ImportType = "I",
+  SetDocumentTitle = "SDT",
 }
 
 type StartEntry = {
@@ -61,13 +62,19 @@ type ImportData = {
   entries: TaskEntry[];
 };
 
+type SetDocumentTitle = {
+  type: UpdateActionType.SetDocumentTitle;
+  title: string;
+};
+
 type StatusUpdateAction =
   | StartEntry
   | EndEntry
   | EditEntry
   | DeleteEntry
   | CreateEntry
-  | ImportData;
+  | ImportData
+  | SetDocumentTitle;
 
 export type StatusUpdate = {
   action: StatusUpdateAction;
@@ -111,6 +118,9 @@ type LabelData = {
 };
 
 interface Store {
+  /** webxdc document title/name,
+   *  useful if you have multiple instances in a chat and want to tell them appart */
+  documentTitle: string;
   entries: TaskEntry[];
   actionHistory: ActionHistoryEntry[];
   /** unique labels, how often they were used and when they were used last
@@ -150,6 +160,7 @@ interface Store {
 }
 
 export const useStore = create<Store>((set, get) => ({
+  documentTitle: "",
   entries: [],
   actionHistory: [],
   labels: {},
@@ -453,6 +464,8 @@ export const useStore = create<Store>((set, get) => ({
           },
         };
       });
+    } else if (action.type == UpdateActionType.SetDocumentTitle) {
+      set({ documentTitle: action.title });
     }
   },
   getOpenEntries(): TaskEntry[] {
@@ -779,5 +792,18 @@ export function createEntry(
     `Timetracking entry ${id} manually created: '${label}' ${new Date(
       ts,
     ).toLocaleString()}`,
+  );
+}
+
+export function setDocumentTitle(newTitle: string) {
+  window.webxdc.sendUpdate(
+    {
+      payload: makeUpdate({
+        type: UpdateActionType.SetDocumentTitle,
+        title: newTitle,
+      }),
+      document: newTitle,
+    },
+    "tt change title",
   );
 }

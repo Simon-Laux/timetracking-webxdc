@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { UserPlusIcon } from "@heroicons/react/24/outline";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setDocumentTitle, useStore } from "../../store";
 
 export function OptionsPage() {
   const navigate = useNavigate();
@@ -29,8 +31,32 @@ export function OptionsPage() {
               onChange={() => setHideTrackPageStats(!hide_track_page_stats)}
             />
           </label>
+          <DocumentTitleOption />
         </div>
       </div>
     </div>
+  );
+}
+
+function DocumentTitleOption() {
+  const currentDocumentTitle = useStore((state) => state.documentTitle);
+  const [title, setTitle] = useState(currentDocumentTitle);
+
+  const updateTitle = () => {
+    setDocumentTitle(title);
+  };
+  return (
+    <label className="label cursor-pointer">
+      <span className="label-text">Document Title</span>
+      <input
+        className="flex-grow mx-3"
+        type="text"
+        value={title}
+        onChange={(ev) => setTitle(ev.target.value)}
+      />
+      <button className="btn" onClick={updateTitle}>
+        Update Title
+      </button>
+    </label>
   );
 }
