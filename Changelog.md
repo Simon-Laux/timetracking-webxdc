@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- add empty-screen for task distribution pie-chart component
 - fix: quick tasks duration are not updated when day changes
 - add option to set webxdc document title
 - add view to see time per label for all time
