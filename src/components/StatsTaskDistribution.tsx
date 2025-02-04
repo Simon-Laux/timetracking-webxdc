@@ -1,5 +1,6 @@
 import { Duration } from "luxon";
 import { useStore } from "../store";
+import { ChartPieIcon } from "@heroicons/react/24/solid";
 
 export function TaskDistributionPie({
   timeRange,
@@ -73,6 +74,13 @@ export function TaskDistributionPie({
       start: cursor,
       end: 1,
     });
+  }
+
+  if (labelsSortedWithPercentage.length == 0) {
+   return <div className="flex flex-col items-center p-24">
+          <ChartPieIcon className="h-16 w-16 m-2" />
+          <p>Not enough data for this time period.</p>
+      </div>
   }
 
   return (
