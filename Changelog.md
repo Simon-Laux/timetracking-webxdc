@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- fix: quick tasks duration are not updated when day changes
 - add option to set webxdc document title
 - add view to see time per label for all time
 - add button to take over start date to end date to the create entry screen.

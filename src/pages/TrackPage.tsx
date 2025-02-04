@@ -149,6 +149,25 @@ export function TrackPage() {
     range: timeRanges[0].get(),
   });
 
+  useEffect(() => {
+    const index = timeRange.index;
+    const updateTimeRange = () => {
+      setTimeRange({
+        index,
+        range: timeRanges[index].get(),
+      });
+    };
+    const timeout = setInterval(
+      updateTimeRange,
+      1000 * 60 * 10 /* update every ten minutes */,
+    );
+    window.addEventListener("focus", updateTimeRange);
+    return () => {
+      clearInterval(timeout);
+      window.removeEventListener("focus", updateTimeRange);
+    };
+  }, [timeRange.index]);
+
   const quick_tasks = useStore.getState().getSortedUniqueLabels();
   const time_spent_today = useStore
     .getState()
