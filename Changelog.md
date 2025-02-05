@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.10.1
+
+- fix git tag
+
+## 0.10.0
+
 - add empty-screen for task distribution pie-chart component
 - fix: quick tasks duration are not updated when day changes
 - add option to set webxdc document title
