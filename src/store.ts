@@ -664,19 +664,14 @@ export function startEntry(label: string) {
 
   const ts = Date.now();
 
-  window.webxdc.sendUpdate(
-    {
-      payload: makeUpdate({
-        type: UpdateActionType.StartEntryType,
-        id,
-        label,
-        ts,
-      }),
-    },
-    `Timetracking entry ${id} started: '${label}' ${new Date(
+  window.webxdc.sendUpdate({
+    payload: makeUpdate({
+      type: UpdateActionType.StartEntryType,
+      id,
+      label,
       ts,
-    ).toLocaleString()}`,
-  );
+    }),
+  });
 }
 
 /** edits an entry,
@@ -691,13 +686,9 @@ export function editEntry(
     id,
   });
   const promise = makeWaitForPayloadPromise(payload.action_ts);
-  window.webxdc.sendUpdate(
-    {
-      payload,
-    },
-    `Timetracking entry '${id}' edited: ${JSON.stringify(changed)}
-    ).toLocaleString()}`,
-  );
+  window.webxdc.sendUpdate({
+    payload,
+  });
   return promise;
 }
 
@@ -714,20 +705,15 @@ export function endEntry(
     throw new Error("can not end an entry that does not exist");
   }
 
-  window.webxdc.sendUpdate(
-    {
-      payload: makeUpdate({
-        type: UpdateActionType.EndEntryType,
-        id,
-        ts: end,
-        auto: auto ? true : undefined,
-        is_break,
-      }),
-    },
-    `Timetracking entry '${id}' ended: '${entry_label}' ${new Date(
-      end,
-    ).toLocaleString()}`,
-  );
+  window.webxdc.sendUpdate({
+    payload: makeUpdate({
+      type: UpdateActionType.EndEntryType,
+      id,
+      ts: end,
+      auto: auto ? true : undefined,
+      is_break,
+    }),
+  });
 }
 
 export function markEntryAsDeleted(id: string) {
@@ -738,15 +724,12 @@ export function markEntryAsDeleted(id: string) {
     throw new Error("can not mark an entry as deleted that does not exist");
   }
 
-  window.webxdc.sendUpdate(
-    {
-      payload: makeUpdate({
-        type: UpdateActionType.DeleteEntryType,
-        id,
-      }),
-    },
-    `Timetracking entry '${id}' marked as deleted: '${entry_label}'}`,
-  );
+  window.webxdc.sendUpdate({
+    payload: makeUpdate({
+      type: UpdateActionType.DeleteEntryType,
+      id,
+    }),
+  });
 }
 
 export function importEntries(entries: TaskEntry[]) {
@@ -754,15 +737,12 @@ export function importEntries(entries: TaskEntry[]) {
     throw new Error("no entries in import");
   }
 
-  window.webxdc.sendUpdate(
-    {
-      payload: makeUpdate({
-        type: UpdateActionType.ImportType,
-        entries,
-      }),
-    },
-    `Import of ${entries.length} entries`,
-  );
+  window.webxdc.sendUpdate({
+    payload: makeUpdate({
+      type: UpdateActionType.ImportType,
+      entries,
+    }),
+  });
 }
 
 export function createEntry(
@@ -778,32 +758,24 @@ export function createEntry(
   const ts = Date.now();
   const id = `${window.webxdc.selfAddr}:${start}:${ts}`;
 
-  window.webxdc.sendUpdate(
-    {
-      payload: makeUpdate({
-        type: UpdateActionType.CreateEntryType,
-        id,
-        label,
-        start,
-        end,
-        is_break,
-      }),
-    },
-    `Timetracking entry ${id} manually created: '${label}' ${new Date(
-      ts,
-    ).toLocaleString()}`,
-  );
+  window.webxdc.sendUpdate({
+    payload: makeUpdate({
+      type: UpdateActionType.CreateEntryType,
+      id,
+      label,
+      start,
+      end,
+      is_break,
+    }),
+  });
 }
 
 export function setDocumentTitle(newTitle: string) {
-  window.webxdc.sendUpdate(
-    {
-      payload: makeUpdate({
-        type: UpdateActionType.SetDocumentTitle,
-        title: newTitle,
-      }),
-      document: newTitle,
-    },
-    "tt change title",
-  );
+  window.webxdc.sendUpdate({
+    payload: makeUpdate({
+      type: UpdateActionType.SetDocumentTitle,
+      title: newTitle,
+    }),
+    document: newTitle,
+  });
 }
