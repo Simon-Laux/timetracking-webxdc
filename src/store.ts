@@ -1,8 +1,8 @@
 import { DateTime, Duration } from "luxon";
 import { create } from "zustand";
 import { getEntriesInTimeframeCutToIt, getMonthsOfEntry } from "./entryMaths";
-import { ReceivedStatusUpdate } from "webxdc-types";
-import "webxdc-types/global";
+import { ReceivedStatusUpdate } from "@webxdc/types";
+import "@webxdc/types/global";
 
 // define shorter versions so we save a tiny bit bandwich
 
