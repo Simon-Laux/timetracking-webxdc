@@ -9,7 +9,14 @@ import packageJson from "./package.json";
 export default defineConfig({
   plugins: [
     react(),
-    buildXDC() /* mockWebxdc() because it doesn't currently work with hash based routing */,
+    buildXDC({
+      outFileName:
+        (packageJson.name || "app") +
+        "_" +
+        (packageJson.version || "") +
+        ".xdc",
+      outDir: "dist-zip",
+    }) /* mockWebxdc() because it doesn't currently work with hash based routing */,
   ],
   build: { chunkSizeWarningLimit: 600 },
 });
