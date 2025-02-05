@@ -664,14 +664,17 @@ export function startEntry(label: string) {
 
   const ts = Date.now();
 
-  window.webxdc.sendUpdate({
-    payload: makeUpdate({
-      type: UpdateActionType.StartEntryType,
-      id,
-      label,
-      ts,
-    }),
-  });
+  window.webxdc.sendUpdate(
+    {
+      payload: makeUpdate({
+        type: UpdateActionType.StartEntryType,
+        id,
+        label,
+        ts,
+      }),
+    },
+    "",
+  );
 }
 
 /** edits an entry,
@@ -686,9 +689,12 @@ export function editEntry(
     id,
   });
   const promise = makeWaitForPayloadPromise(payload.action_ts);
-  window.webxdc.sendUpdate({
-    payload,
-  });
+  window.webxdc.sendUpdate(
+    {
+      payload,
+    },
+    "",
+  );
   return promise;
 }
 
@@ -705,15 +711,18 @@ export function endEntry(
     throw new Error("can not end an entry that does not exist");
   }
 
-  window.webxdc.sendUpdate({
-    payload: makeUpdate({
-      type: UpdateActionType.EndEntryType,
-      id,
-      ts: end,
-      auto: auto ? true : undefined,
-      is_break,
-    }),
-  });
+  window.webxdc.sendUpdate(
+    {
+      payload: makeUpdate({
+        type: UpdateActionType.EndEntryType,
+        id,
+        ts: end,
+        auto: auto ? true : undefined,
+        is_break,
+      }),
+    },
+    "",
+  );
 }
 
 export function markEntryAsDeleted(id: string) {
@@ -724,12 +733,15 @@ export function markEntryAsDeleted(id: string) {
     throw new Error("can not mark an entry as deleted that does not exist");
   }
 
-  window.webxdc.sendUpdate({
-    payload: makeUpdate({
-      type: UpdateActionType.DeleteEntryType,
-      id,
-    }),
-  });
+  window.webxdc.sendUpdate(
+    {
+      payload: makeUpdate({
+        type: UpdateActionType.DeleteEntryType,
+        id,
+      }),
+    },
+    "",
+  );
 }
 
 export function importEntries(entries: TaskEntry[]) {
@@ -737,12 +749,15 @@ export function importEntries(entries: TaskEntry[]) {
     throw new Error("no entries in import");
   }
 
-  window.webxdc.sendUpdate({
-    payload: makeUpdate({
-      type: UpdateActionType.ImportType,
-      entries,
-    }),
-  });
+  window.webxdc.sendUpdate(
+    {
+      payload: makeUpdate({
+        type: UpdateActionType.ImportType,
+        entries,
+      }),
+    },
+    "",
+  );
 }
 
 export function createEntry(
@@ -758,24 +773,30 @@ export function createEntry(
   const ts = Date.now();
   const id = `${window.webxdc.selfAddr}:${start}:${ts}`;
 
-  window.webxdc.sendUpdate({
-    payload: makeUpdate({
-      type: UpdateActionType.CreateEntryType,
-      id,
-      label,
-      start,
-      end,
-      is_break,
-    }),
-  });
+  window.webxdc.sendUpdate(
+    {
+      payload: makeUpdate({
+        type: UpdateActionType.CreateEntryType,
+        id,
+        label,
+        start,
+        end,
+        is_break,
+      }),
+    },
+    "",
+  );
 }
 
 export function setDocumentTitle(newTitle: string) {
-  window.webxdc.sendUpdate({
-    payload: makeUpdate({
-      type: UpdateActionType.SetDocumentTitle,
-      title: newTitle,
-    }),
-    document: newTitle,
-  });
+  window.webxdc.sendUpdate(
+    {
+      payload: makeUpdate({
+        type: UpdateActionType.SetDocumentTitle,
+        title: newTitle,
+      }),
+      document: newTitle,
+    },
+    "",
+  );
 }
