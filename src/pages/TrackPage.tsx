@@ -202,8 +202,8 @@ export function TrackPage() {
                 array.length - 1 === index
                   ? "rounded-r-lg border-l-0"
                   : index === 0
-                  ? "rounded-l-lg border-r-0"
-                  : "border-x-0";
+                    ? "rounded-l-lg border-r-0"
+                    : "border-x-0";
 
               let active =
                 timeRange.index === index

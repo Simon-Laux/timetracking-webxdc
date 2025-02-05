@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import zipPack from "vite-plugin-zip-pack";
+import { buildXDC, mockWebxdc } from "@webxdc/vite-plugins";
 
 //@ts-ignore
 import packageJson from "./package.json";
@@ -9,13 +9,7 @@ import packageJson from "./package.json";
 export default defineConfig({
   plugins: [
     react(),
-    zipPack({
-      outFileName:
-        (packageJson.name || "app") +
-        "_" +
-        (packageJson.version || "") +
-        ".xdc",
-    }),
+    buildXDC() /* mockWebxdc() because it doesn't currently work with hash based routing */,
   ],
   build: { chunkSizeWarningLimit: 600 },
 });

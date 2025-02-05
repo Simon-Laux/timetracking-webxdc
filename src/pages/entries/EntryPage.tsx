@@ -173,8 +173,8 @@ function EntryEditForm({
         updated_properties.new_is_break = newValues.isBreak
           ? true
           : typeof entry.is_break !== "undefined"
-          ? false
-          : undefined;
+            ? false
+            : undefined;
       }
       if (newValues.start) {
         if (
