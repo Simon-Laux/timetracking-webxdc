@@ -1,5 +1,6 @@
-import { DateTime, Duration } from "luxon";
+import { DateTime, Duration, WeekdayNumbers } from "luxon";
 import { TaskEntry } from "./store";
+import { WeekView } from "./components/StatsWeekView";
 
 type SimonsBotFormatEntry = {
   /** date in DD.MM.YY example "01.03.23" */
@@ -59,7 +60,7 @@ namespace simons_bot_format {
     return date.set({ hour, minute });
   }
 
-  function weekdayShortToNumber(weekday: string) {
+  function weekdayShortToNumber(weekday: string): WeekdayNumbers | undefined {
     return {
       Mon: 1,
       Tue: 2,
@@ -68,7 +69,7 @@ namespace simons_bot_format {
       Fri: 5,
       Sat: 6,
       Sun: 7,
-    }[weekday];
+    }[weekday] as WeekdayNumbers | undefined;
   }
 
   export function parseEndDate(day: SimonsBotFormatEntry["day"], end: string) {
