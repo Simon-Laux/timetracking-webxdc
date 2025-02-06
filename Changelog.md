@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- add WofWca to contributors
+
 ## 0.10.1
 
 - fix git tag

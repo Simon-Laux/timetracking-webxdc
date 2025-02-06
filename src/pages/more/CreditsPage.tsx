@@ -22,6 +22,7 @@ export function CreditsPage() {
           <p>This webxdc app was made by:</p>
           <ul className="mx-2 list-inside">
             <li className="list-disc font-bold">Simon Laux</li>
+            <li className="list-disc font-bold">WofWca</li>
             <li className="list-disc font-thin">
               and maybe You? If you want to see your name here, please
               contribute on github
