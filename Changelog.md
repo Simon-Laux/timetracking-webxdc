@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.10.2
+- Disable autocomplete for the label on Android, because there it was interfering with keyboard input
 - add WofWca to contributors
 
 ## 0.10.1
