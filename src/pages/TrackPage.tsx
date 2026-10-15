@@ -185,6 +185,9 @@ export function TrackPage() {
     }
   }
 
+  const is_android = navigator.userAgentData?.platform === "Android"
+  || /android/i.test(navigator.userAgent);
+
   return (
     <div className="flex h-full flex-col">
       {!hide_track_page_stats && (
@@ -288,7 +291,8 @@ export function TrackPage() {
       >
         {/* start a new task */}
         <input
-          list="quick-tasks"
+          // android overlays suggestions list over keyboard, which makes the app near unusable
+          list={!is_android && "quick-tasks"}
           ref={labelRef}
           type="text"
           placeholder="task label"
