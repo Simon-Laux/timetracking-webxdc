@@ -185,8 +185,10 @@ export function TrackPage() {
     }
   }
 
-  const is_android = navigator.userAgentData?.platform === "Android"
-  || /android/i.test(navigator.userAgent);
+  // userAgentData is only available on chromium based browsers https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgentData
+  const is_android =
+    (navigator as any).userAgentData?.platform === "Android" ||
+    /android/i.test(navigator.userAgent);
 
   return (
     <div className="flex h-full flex-col">
@@ -292,7 +294,7 @@ export function TrackPage() {
         {/* start a new task */}
         <input
           // android overlays suggestions list over keyboard, which makes the app near unusable
-          list={!is_android && "quick-tasks"}
+          list={!is_android ? "quick-tasks" : undefined}
           ref={labelRef}
           type="text"
           placeholder="task label"

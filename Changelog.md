@@ -2,7 +2,13 @@
 
 ## Unreleased
 
+## 0.10.3
+
+- Fix TS issues
+- Move from ava test runner to vitest.
+
 ## 0.10.2
+
 - Disable autocomplete for the label on Android, because there it was interfering with keyboard input
 - add WofWca to contributors
 

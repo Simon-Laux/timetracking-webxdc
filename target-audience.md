@@ -4,5 +4,3 @@
 - keeping track of time spent per task, useful for freelance accounting and a general overview.
 - general purpose: could be used to track all kinds of tasks: work-related, household chores, sports, hobbies, habits.
 - should be easy to use, we don't expect the audience to be tech-nerds, just average people.
-
-  
