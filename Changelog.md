@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.10.4
+
+- increase CI node version to 24 to fix build
+
 ## 0.10.3
 
 - Fix TS issues
