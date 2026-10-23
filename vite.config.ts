@@ -18,5 +18,5 @@ export default defineConfig({
       outDir: "dist-zip",
     }) /* mockWebxdc() because it doesn't currently work with hash based routing */,
   ],
-  build: { chunkSizeWarningLimit: 600 },
+  build: { chunkSizeWarningLimit: 600, cssMinify: false },
 });
